@@ -1,0 +1,34 @@
+<nav *ngIf="auth.isLoggedIn()" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="">Home Metrics</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/location" routerLinkActive="active">Search via Type</a>
+      </li>
+      <li *ngIf="auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/investment" routerLinkActive="active">Add Investment Amount</a>
+      </li>
+      <li *ngIf="auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/portfolio" routerLinkActive="active">Portfolio Management</a>
+      </li>
+    </ul>
+
+
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf="auth.isLoggedIn()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ auth.getUserDetails()?.name }}</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/profile">Profile</a>
+          <a class="dropdown-item" routerLink="/register">Register</a>
+          <a class="dropdown-item" (click)="auth.logout()">
+            <i class="fa fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

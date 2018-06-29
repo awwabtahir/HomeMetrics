@@ -1,0 +1,51 @@
+<nav-bs></nav-bs>
+<div class="container">
+  <div class="row">
+
+    <!-- Get Property Types here -->
+    <div class="col align-self-center mt-4 mb-4" style="flex-grow: 0.2;">
+      <select class="form-control" id="selectPropertyType" (change)="onTypeChange()" name="propTypeId" [(ngModel)]="propTypeId">
+        <option value="0">Select Property Type</option>
+        <option *ngFor="let type of propertytypes" value="{{ type?._id }}">{{ type?.type }}</option>
+      </select>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row mt-4">
+
+    <div class="col" *ngFor="let loc of foundLocations">
+      <button (click)="locBtnClicked(loc._id)" class="btn btn-info" data-toggle="modal" data-target="#areaModal">{{ loc.location }}</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Choose Area</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button (click)="areaClicked(4)" type="button" class="btn btn-info btn-sm" data-dismiss="modal">4 Marla</button>
+        <button (click)="areaClicked(5)" type="button" class="btn btn-info btn-sm" data-dismiss="modal">5 Marla</button>
+        <button (click)="areaClicked(10)" type="button" class="btn btn-info btn-sm" data-dismiss="modal">10 Marla</button>
+        <button (click)="areaClicked(20)" type="button" class="btn btn-info btn-sm" data-dismiss="modal">1 Kanal</button>
+        <button (click)="areaClicked(20)" type="button" class="btn btn-info btn-sm" data-dismiss="modal">1.5 Kanal</button>
+        <button (click)="areaClicked(40)" type="button" class="btn btn-info btn-sm" data-dismiss="modal">2 Kanal</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

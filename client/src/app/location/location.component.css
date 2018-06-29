@@ -1,0 +1,8 @@
+.col {
+    flex-grow: 0;
+}
+button {
+    padding: 30px;
+    font-size: 1.6rem;
+    margin: 10px;
+}

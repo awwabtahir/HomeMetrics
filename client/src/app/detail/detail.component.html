@@ -1,0 +1,20 @@
+<nav-bs></nav-bs>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col">
+      <canvas id="myChart" width="700" height="400"></canvas>
+      <br>
+      <p>Find future price of property after <input (keyup)="future()" [(ngModel)]="pPrice" type="number"> days.</p>
+      <p>Price will be Rs. {{ predictPrice  }} Lacs</p>
+    </div>
+    <div class="col ml-2">
+      <h5>Dealers in {{ location[0].location }}</h5>
+      <p *ngFor="let dealer of dealers" class="mt-2 mb-2">
+        <b>Name</b>: {{ dealer.name }},
+        <b>Phone #</b>: {{ dealer.phone }}
+      </p>
+    </div>
+  </div>
+</div>
+
+

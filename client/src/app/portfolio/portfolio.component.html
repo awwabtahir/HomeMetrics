@@ -1,0 +1,75 @@
+<nav-bs></nav-bs>
+<div class="container" *ngIf="userId && properties && proptypes && locations">
+  <div class="row">
+    <div style="
+    margin: 20px;
+    border:  1px solid;
+    padding: 20px;
+    ">
+      <h3>Add Property</h3>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputLoc">Select Location</label>
+          <select id="inputLoc" class="form-control" name="location" [(ngModel)]="property.location">
+            <option *ngFor="let loc of locations" value="{{ loc._id }}">{{ loc.location }}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputType">Select Type</label>
+          <select id="inputType" class="form-control" name="type" [(ngModel)]="property.type">
+            <option *ngFor="let t of proptypes" value="{{ t._id }}">{{ t.type }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputArea">Area</label>
+          <input type="text" class="form-control" name="area" id="inputArea" [(ngModel)]="property.size">
+          <p *ngIf="property.size">{{ property.size }} Marla</p>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputPrice">Price</label>
+          <input type="text" class="form-control" name="price" id="inputPrice" [(ngModel)]="property.price">
+          <p *ngIf="property.price">{{ property.price }} Lacs</p>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputBeds">Beds</label>
+          <input type="text" class="form-control" name="beds" id="inputBeds" [(ngModel)]="property.beds">
+          <p *ngIf="property.beds">{{ property.beds }} Beds</p>
+        </div>
+      </div>
+      <button (click)="addProperty()" class="btn btn-primary">Add Property</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="foundProperties1">
+  <div class="row">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Location</th>
+              <th scope="col">Type</th>
+              <th scope="col">Area</th>
+              <th scope="col">Buy Price</th>
+              <th scope="col">Beds</th>
+              <th scope="col">Today Price</th>
+              <th scope="col">Expected ROI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prop of foundProperties1; let i = index">
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{ prop.location }}</td>
+              <td>{{ prop.type }}</td>
+              <td>{{ prop.size }} Marla</td>
+              <td>{{ prop.price }} Lacs</td>
+              <td>{{ prop.beds }}</td>
+              <td>{{ prop.roi }} Lacs</td>
+              <td>{{ ((prop.roi-prop.price)/prop.price)*100 | number:2-2 }}%</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

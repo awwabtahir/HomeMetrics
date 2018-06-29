@@ -1,0 +1,33 @@
+<nav-bs></nav-bs>
+<div class="container">
+  <div class="row">
+
+    <!-- Get Property Types here -->
+    <div class="col align-self-center mt-4 mb-4" style="flex-grow: 0.2;">
+      <input class="form-control" (keyup)="amountEntered()" type="text" placeholder="Enter investment amount in Lacs" style=
+      "width: 300px;" [(ngModel)]="amount">
+    </div>
+
+  </div>
+</div> 
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p *ngIf="amount">You entered the amount: {{ amount }} lacs</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let prop of newprop" class="col mb-2">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Found in {{ prop.location }}</h5>
+          <p class="card-text">Price: {{ prop.price }} Lacs <br>Type: {{ prop.type }} <br>Area: {{ prop.size }} Marla </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
