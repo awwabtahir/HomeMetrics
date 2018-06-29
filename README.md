@@ -1,4 +1,4 @@
-# MEAN Stack Authentication
+# Running Home Metrics Application
 
 To run, you just have NodeJS installed.
 
